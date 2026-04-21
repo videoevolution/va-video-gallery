@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Acquisitions — FAQ Video Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: rgba(201,168,76,0.15);
+    --dark: #0E0E0E;
+    --dark-2: #161616;
+    --dark-3: #1E1E1E;
+    --dark-4: #2A2A2A;
+    --text: #F0EDE6;
+    --text-muted: #8A8680;
+    --border: rgba(201,168,76,0.18);
+    --border-subtle: rgba(255,255,255,0.06);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark-2); border-bottom: 1px solid var(--border);
+    padding: 0 48px; display: flex; align-items: center;
+    justify-content: space-between; height: 80px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-area { display: flex; align-items: center; }
+  .logo-area img { height: 44px; }
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; letter-spacing: 0.08em;
+    color: var(--gold); display: none;
+  }
+  .header-right {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 48px 60px;
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+    background: linear-gradient(180deg, #F5F3EF 0%, #EDEAE3 100%);
+    position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: ''; position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #8a6d2a; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px,5vw,58px); font-weight: 300;
+    line-height: 1.1; margin-bottom: 16px;
+    color: #1a1a1a;
+  }
+  .hero h1 em { font-style: italic; color: #9a6f1e; }
+  .hero p {
+    font-size: 14px; color: #4a4744;
+    max-width: 520px; line-height: 1.7;
+    margin: 0 auto;
+  }
+  .hero-meta {
+    margin-top: 40px; display: flex;
+    gap: 48px; justify-content: center; flex-wrap: wrap;
+  }
+  .hero-stat { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; color: #8a6d2a;
+  }
+  .hero-stat-label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #6b6864;
+  }
+
+  /* ── INTRO BAR ── */
+  .intro-bar {
+    padding: 18px 48px;
+    background: var(--dark-2);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .intro-bar p {
+    font-size: 13px; color: var(--text); line-height: 1.6;
+    max-width: 680px; margin: 0 auto;
+  }
+  .intro-bar p span { color: var(--text); font-weight: 500; }
+
+  /* ── GRID ── */
+  .grid-section { padding: 48px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px; text-align: center;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--dark-3);
+    position: relative;
+    transition: transform 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { z-index: 2; transform: scale(1.02); }
+
+  .card-thumb {
+    aspect-ratio: 16/9;
+    background: var(--dark-4);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .card-thumb::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(14,14,14,0.85) 100%);
+    pointer-events: none; z-index: 1;
+  }
+  .thumb-bg {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 20px,
+      rgba(201,168,76,0.025) 20px, rgba(201,168,76,0.025) 21px
+    );
+  }
+  .thumb-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+  }
+  .play-icon {
+    width: 52px; height: 52px;
+    border: 1.5px solid rgba(201,168,76,0.5); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s; position: relative; z-index: 2;
+  }
+  .card:hover .play-icon { background: var(--gold); border-color: var(--gold); }
+  .play-icon svg { width: 16px; height: 16px; fill: var(--gold); margin-left: 3px; transition: fill 0.2s; }
+  .card:hover .play-icon svg { fill: var(--dark); }
+
+  .card-num {
+    position: absolute; top: 12px; left: 12px; z-index: 3;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); background: rgba(14,14,14,0.88);
+    padding: 4px 10px; border: 1px solid rgba(201,168,76,0.25);
+  }
+  .card-multi {
+    position: absolute; top: 12px; right: 12px; z-index: 3;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--dark); background: var(--gold);
+    padding: 4px 10px;
+  }
+
+  .card-body {
+    padding: 20px 20px 16px; flex: 1;
+    display: flex; flex-direction: column; gap: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 400; line-height: 1.35;
+    color: #F5F2EC;
+  }
+
+  .presenter-row {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 4px;
+  }
+  .presenter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: #c8c5c0;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 12px; cursor: pointer;
+    transition: all 0.2s; border-radius: 1px;
+  }
+  .presenter-btn:hover,
+  .presenter-btn.active {
+    background: var(--gold); border-color: var(--gold);
+    color: var(--dark);
+  }
+  .presenter-label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #b0ada8;
+    margin-top: 2px; margin-bottom: 2px;
+    display: block;
+  }
+
+  .card-footer {
+    margin-top: auto; padding-top: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .card-faq-num {
+    font-size: 12px; letter-spacing: 0.08em; color: #b0ada8;
+  }
+  .watch-btn {
+    background: var(--gold); border: none;
+    color: var(--dark);
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 7px 16px; cursor: pointer;
+    transition: background 0.2s; border-radius: 1px;
+  }
+  .watch-btn:hover { background: var(--gold-light); }
+  .watch-btn:disabled {
+    background: transparent; color: var(--text-muted);
+    cursor: default; border: 1px solid var(--border);
+  }
+
+  /* ── SHARE TOOLBAR ── */
+  .card-share-bar {
+    display: flex; gap: 6px;
+    padding: 10px 20px 16px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .share-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: #b0ada8;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 12px; cursor: pointer;
+    transition: all 0.2s; border-radius: 1px;
+    display: flex; align-items: center; gap: 5px;
+    white-space: nowrap;
+  }
+  .share-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .share-btn.copied { border-color: #6aaa6a; color: #6aaa6a; }
+  .share-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+  /* ── EMBED MODAL ── */
+  #embed-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85); z-index: 600;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  #embed-overlay.open { display: flex; }
+  .embed-modal {
+    background: var(--dark-2); border: 1px solid var(--border);
+    padding: 36px; width: 100%; max-width: 560px;
+    display: flex; flex-direction: column; gap: 16px; position: relative;
+  }
+  .embed-modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 300;
+  }
+  .embed-modal p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .embed-modal p strong { color: var(--text); font-weight: 400; }
+  .embed-code-wrap { position: relative; }
+  .embed-code {
+    width: 100%; background: var(--dark-4);
+    border: 1px solid var(--border);
+    color: #b0ada8; font-family: monospace; font-size: 12px;
+    padding: 14px; resize: none; outline: none;
+    line-height: 1.6; min-height: 100px;
+  }
+  .embed-copy-btn {
+    background: var(--gold); border: none; color: var(--dark);
+    font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 12px; cursor: pointer; transition: background 0.2s; width: 100%;
+  }
+  .embed-copy-btn:hover { background: var(--gold-light); }
+  .embed-note {
+    font-size: 11px; color: var(--text-muted);
+    padding: 10px 14px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.05);
+    line-height: 1.6;
+  }
+
+  /* ── FEEDBACK BAR ── */
+  .feedback-bar {
+    padding: 14px 48px; background: var(--dark-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 16px;
+  }
+  .feedback-bar-text { font-size: 12px; color: var(--text-muted); }
+  .feedback-bar-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--gold);
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 8px 20px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .feedback-bar-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+
+  /* ── VIDEO MODAL ── */
+  #video-modal {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .video-modal-inner {
+    position: relative;
+    width: 100%; max-width: 960px;
+  }
+  .video-modal-close {
+    position: absolute;
+    top: -44px; right: 0;
+    background: none; border: none;
+    color: #fff; font-size: 32px;
+    cursor: pointer; opacity: 0.7;
+    transition: opacity 0.2s; line-height: 1;
+  }
+  .video-modal-close:hover { opacity: 1; }
+  .video-modal-title {
+    position: absolute;
+    top: -44px; left: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; max-width: calc(100% - 60px);
+    line-height: 44px;
+  }
+  .video-frame-wrap {
+    position: relative; width: 100%;
+    padding-bottom: 56.25%;
+    background: #000;
+  }
+  #video-frame {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  /* ── FEEDBACK MODAL ── */
+  #feedback-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8); z-index: 500;
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  #feedback-overlay.open { display: flex; }
+  .feedback-modal {
+    background: var(--dark-2); border: 1px solid var(--border);
+    padding: 40px; width: 100%; max-width: 500px;
+    display: flex; flex-direction: column; gap: 20px; position: relative;
+  }
+  .feedback-modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300;
+  }
+  .feedback-modal > p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: -8px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .feedback-modal label {
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .feedback-modal input,
+  .feedback-modal textarea,
+  .feedback-modal select {
+    width: 100%; background: var(--dark-3); border: 1px solid var(--border);
+    color: var(--text); font-family: 'Jost', sans-serif;
+    font-size: 14px; font-weight: 300;
+    padding: 10px 14px; outline: none;
+    transition: border-color 0.2s; appearance: none;
+  }
+  .feedback-modal input:focus,
+  .feedback-modal textarea:focus,
+  .feedback-modal select:focus { border-color: var(--gold); }
+  .feedback-modal textarea { min-height: 110px; resize: vertical; }
+  .feedback-modal select option { background: var(--dark-3); }
+  .feedback-submit {
+    background: var(--gold); border: none; color: var(--dark);
+    font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 14px; cursor: pointer; transition: background 0.2s; width: 100%;
+  }
+  .feedback-submit:hover { background: var(--gold-light); }
+  .modal-close {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none; color: var(--text-muted);
+    font-size: 24px; cursor: pointer; transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); }
+  .feedback-success {
+    text-align: center; padding: 20px 0;
+    display: none; flex-direction: column; gap: 12px; align-items: center;
+  }
+  .feedback-success .tick {
+    width: 48px; height: 48px; border: 1.5px solid var(--gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .feedback-success .tick svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; }
+  .feedback-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; }
+  .feedback-success p { font-size: 13px; color: var(--text-muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 80px; padding: 40px 48px;
+    border-top: 1px solid var(--border); background: var(--dark-2);
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 24px;
+  }
+  .footer-logo img { height: 28px; opacity: 0.4; }
+  .footer-text { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); }
+  .footer-contact a {
+    font-size: 12px; color: var(--gold); text-decoration: none;
+    opacity: 0.8; transition: opacity 0.2s;
+  }
+  .footer-contact a:hover { opacity: 1; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    header, .hero, .intro-bar, .feedback-bar,
+    .grid-section, footer { padding-left: 20px; padding-right: 20px; }
+    .hero { padding-top: 48px; }
+    .hero-meta { gap: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .feedback-modal { padding: 28px 20px; }
+    .feedback-bar { flex-direction: column; align-items: flex-start; }
+    .video-modal-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <img src="vintage-acquisitions-logo.png" alt="Vintage Acquisitions"
+      onerror="this.style.display='none';document.querySelector('.logo-text').style.display='block'">
+    <span class="logo-text">Vintage Acquisitions</span>
+  </div>
+  <div class="header-right">FAQ Video Library</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Vintage Acquisitions &mdash; Scotch Cask Whisky Investment</p>
+  <h1>Frequently Asked<br><em>Questions</em> Videos</h1>
+  <p>Every question answered on camera — by the people who know cask whisky investment best. Select a question, then choose your preferred presenter.</p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <span class="hero-stat-num">21</span>
+      <span class="hero-stat-label">Questions</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">6</span>
+      <span class="hero-stat-label">Presenters</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO BAR -->
+<div class="intro-bar">
+  <p><span>How to use this library:</span> Each question below has been answered by one or more members of our team. Where multiple versions exist, select your preferred presenter using the buttons on the card — then click Watch to view.</p>
+</div>
+
+<!-- GRID -->
+<section class="grid-section">
+  <p class="section-label">Select a question to explore</p>
+  <div class="grid" id="video-grid"></div>
+</section>
+
+<!-- FEEDBACK BAR -->
+<div class="feedback-bar">
+  <p class="feedback-bar-text">Have a question that isn't covered, or thoughts on a video? Let us know.</p>
+  <button class="feedback-bar-btn" onclick="openFeedback()">Leave Feedback</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="vintage-acquisitions-logo.png" alt="Vintage Acquisitions">
+  </div>
+  <div class="footer-text">&copy; 2025 Vintage Acquisitions &middot; Brooks &amp; Whitaker Limited &middot; London SE1</div>
+  <div class="footer-contact">
+    <a href="tel:+442080572001">+44 (0)208 057 2001</a>
+    &nbsp;&middot;&nbsp;
+    <a href="mailto:info@vintageacquisitions.com">info@vintageacquisitions.com</a>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div id="video-modal">
+  <div class="video-modal-inner">
+    <span class="video-modal-title" id="video-modal-title"></span>
+    <button class="video-modal-close" onclick="closeVideo()">&times;</button>
+    <div class="video-frame-wrap">
+      <iframe
+        id="video-frame"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK MODAL -->
+<div id="feedback-overlay">
+  <div class="feedback-modal">
+    <button class="modal-close" onclick="closeFeedback()">&times;</button>
+    <div id="feedback-form-wrap" style="display:flex;flex-direction:column;gap:20px;">
+      <h2>Leave Feedback</h2>
+      <p>No account needed. Select a video, share your thoughts, and we'll be in touch.</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="fb-name" placeholder="e.g. James Richardson">
+      </div>
+      <div class="form-group">
+        <label>Video</label>
+        <select id="fb-video"><option value="">— Select a question —</option></select>
+      </div>
+      <div class="form-group">
+        <label>Your Feedback</label>
+        <textarea id="fb-message" placeholder="Share your thoughts, questions, or suggestions..."></textarea>
+      </div>
+      <button class="feedback-submit" onclick="submitFeedback()">Send Feedback</button>
+    </div>
+    <div class="feedback-success" id="feedback-success">
+      <div class="tick">
+        <svg viewBox="0 0 20 20" stroke-width="1.5"><polyline points="4,10 8,14 16,6"/></svg>
+      </div>
+      <h3>Thank you</h3>
+      <p>Your feedback has been received. We'll be in touch shortly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EMBED MODAL -->
+<div id="embed-overlay">
+  <div class="embed-modal">
+    <button class="modal-close" onclick="closeEmbed()">&times;</button>
+    <h2>Embed This Video</h2>
+    <p><strong id="embed-modal-title"></strong></p>
+    <p>Paste this code into any webpage to embed the video player directly.</p>
+    <div class="embed-code-wrap">
+      <textarea class="embed-code" id="embed-code-area" readonly rows="5"></textarea>
+    </div>
+    <button class="embed-copy-btn" id="embed-copy-btn" onclick="copyEmbedCode()">Copy Embed Code</button>
+    <div class="embed-note">
+      <strong style="color:var(--text);font-weight:400;">Note for your web developer:</strong> The Google Drive file must be set to "Anyone with the link can view" for the embed to work publicly. Direct link to this video on the library: <a id="embed-page-link" href="#" target="_blank" style="color:var(--gold);word-break:break-all;"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────
+const FORMSPREE_URL = 'YOUR_FORMSPREE_ENDPOINT';
+
+// ── FAQ DATA ──────────────────────────────────────────────
+const faqs = [
+  {
+    num: 1,
+    title: "What Are the True Costs of Owning a Whisky Cask?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1aaWq9HaesWpIa0gOoWnD8Fr-lvp06r6W/view?usp=sharing" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/10khO23iUyPu9CInmy0dngj5Oy5fFJvAi/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1-2bZ9IqXZvAWDJ_LZsbPGMhl7eQ6H9dj/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 2,
+    title: "How Much Do You Need to Start Investing?",
+    versions: [
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1zeMKhOpyln8ewSZioQOVxHXHDSDyT4G1/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1hUTURM5rW29WKfgIkFnGOcoxno8wiHcA/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 3,
+    title: "What Happens to My Cask if Anything Happens to Vintage Acquisitions?",
+    versions: [
+      { presenter: "Robert Long",   link: "https://drive.google.com/file/d/1oUClRkLCy8RDSRJdd2ah29XzcW9mcpBF/view?usp=drive_link" },
+      { presenter: "Will Turnage",  link: "https://drive.google.com/file/d/1dxJ6ppVn9e-bBDAMTUS_4zjdXUqmsM_x/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1mZCEAQg-7oSg9O0J74ZpLoaBou8nvvsq/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1nIcOFfLn5Dhn2joPph08mmdWDcVvc1Wz/view?usp=sharing" },
+      { presenter: "Ryan Stockman", link: "https://drive.google.com/file/d/1BmazVwBgbRnLSfdIPAm2sQPDdxH3b2ca/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 4,
+    title: "Why Do Experienced Investors Choose Vintage Acquisitions?",
+    versions: [
+      { presenter: "Robert Long (1)", link: "https://drive.google.com/file/d/1Mp_C4Vj6L1Q3AEjjKTxBFD0xTmXAnJcS/view?usp=drive_link" },
+      { presenter: "Robert Long (2)", link: "https://drive.google.com/file/d/1vILU-gIJwOce8YiH5sqL0v-e5PbfHEtR/view?usp=drive_link" },
+      { presenter: "Matthew Soper",   link: "https://drive.google.com/file/d/10LUyGdYFjZnq-8zl0QoyITWy6YwxOxVv/view?usp=drive_link" },
+      { presenter: "Nia Davies",      link: "https://drive.google.com/file/d/1LqUviP1-sMgjRxAmjEWuky0QtGnhifin/view?usp=sharing" },
+      { presenter: "Ryan Stockman",   link: "https://drive.google.com/file/d/15jHmbKm_ifv5zBtixyP-JfNEPe63_ZHs/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 5,
+    title: "What Makes Vintage Acquisitions Different?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1GKzBq8qeL66EsbJZ-NJ3U9lxmtT6Kbxi/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1yFt6JfSsVGmXen0_lEruxF2RkweK3_-o/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1RUi0XYcCt1aXB2kamB_iOKtk9oRVZC4T/view?usp=sharing" },
+      { presenter: "Robert Long",   link: "https://drive.google.com/file/d/19mY4_CHylDhgwROWCtDtE62viBWcGa-c/view?usp=drive_link" },
+      { presenter: "Ryan Stockman", link: "https://drive.google.com/file/d/1Srmgf1dla9m-JZfNZHnR1e4fXuwCzdkq/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 6,
+    title: "How Does the Investment Process Work?",
+    versions: [
+      { presenter: "Alex George", link: "https://drive.google.com/file/d/17jLFHQ_ONCaUmJ9xs2ZT8Ys6coMWg-ab/view?usp=drive_link" },
+      { presenter: "Nia Davies",  link: "https://drive.google.com/file/d/1UvgwPtBZ94Q7sgFFYn4picFN3rJlU_vB/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 7,
+    title: "How Does Whisky Grow in Value?",
+    versions: [
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1sfT9eTW6gGQelND1-k6ck4xBDfsCXCLr/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1Qli2BeZMJnBzdbEDS4p9RpjzBNN4GZil/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 8,
+    title: "What Are the Risks?",
+    versions: [
+      { presenter: "Alex George", link: "https://drive.google.com/file/d/116W71zC5YVPqn0hHhF7Vi5s4HU0yX35m/view?usp=drive_link" },
+      { presenter: "Nia Davies",  link: "https://drive.google.com/file/d/1AeK1VjdhhAGJqh8t5_K6QD4czx1iMde8/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 9,
+    title: "How Do We Select Casks?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1HEbXYWRU4MsU33fe76Q4wuBXkqgY-HCY/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1lqbUOm5-3cvKEn9Q7DheQ3MTUk-G273Z/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1_5-Kg7VbrNUsLiRAYhA5ea8taky15dOH/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 10,
+    title: "Why Is Scotch Whisky a Recognised Alternative Asset?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1LdnTRg03M7l6FxhnrN7S3N2gCd4BZC1b/view?usp=drive_link" },
+      { presenter: "Will Turnage",  link: "https://drive.google.com/file/d/1pyrEu22Z_sN1_HpOwChCelCmQAK31i00/view?usp=drive_link" },
+      { presenter: "Robert Long",   link: "https://drive.google.com/file/d/1p8FjxPmPBQTbNgaAlOs81u45ujIAV7px/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1JUL4SrZSppQJjji5p7L5qHATa6X1M5ZH/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1CGDF1xfMxI27YXeIvohoNXlRQv_-jT0-/view?usp=sharing" },
+      { presenter: "Ryan Stockman", link: "https://drive.google.com/file/d/1ZrblUuHjD-0Ho06awMzWKQ4LN0mejm5e/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 11,
+    title: "How Do I Know My Cask Exists?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1PUx3ClJpXkEd1AG-JuIfr6YvDM6iBEJm/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1B_jo8-Cp7YMiqf9OKpmoUXpMJesg7TFp/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1Yc2osfY3az_Cfiu5NNtmQpZ4QANOtwxC/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 12,
+    title: "Where Is My Cask Stored?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1lDqhN1_rRw03ltoTdKaix1ON8ITunSDg/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/15fYvGUdzo61Tg1_FbRTZWH7zwIyWsfn8/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1XR55Vw501eBra_TlHmvw060ax6KoZU4H/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 13,
+    title: "Am I Insured?",
+    versions: [
+      { presenter: "Alex George", link: "https://drive.google.com/file/d/1rNFrv_z9ZtOfC8e2yQ-GE4pjpaKdNWGN/view?usp=drive_link" },
+      { presenter: "Nia Davies",  link: "https://drive.google.com/file/d/18m4PUH8Z-xt8zDqEbpbNuTECQH1f8W0y/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 14,
+    title: "What Is the Exit Strategy?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1zihzahIeoFX71Q0lJQ2KXhKzLUu_n26I/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1hSCXgkDS1xJpBQCinwID4yMqZkfSQvmI/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1UCvNfVHvPPRabfHVjLGrpaxO7WQkWz3z/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 15,
+    title: "Can I Visit My Cask?",
+    versions: [
+      { presenter: "Alex George", link: "https://drive.google.com/file/d/1N-HQxWl8tyQ-p9AnGBBHKWatAV9F5jiO/view?usp=drive_link" },
+      { presenter: "Nia Davies",  link: "https://drive.google.com/file/d/1lWxkOjZu2N_SpI0bfONIuN0fcH57rXxJ/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 16,
+    title: "Why Only Scotch Single Malt?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1QdfqWhguLTOy5QH2Ws4onpqAPsKTIJ8i/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1Q-3DV_QWo8GOR9ZlSJI-hb3lwqX1gXlm/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1i60bXSwG9AdHItvwHU412j1WDF3BHURr/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 17,
+    title: "What Makes a High Quality Cask?",
+    versions: [
+      { presenter: "Alex George (1)", link: "https://drive.google.com/file/d/1L0rBulUdEEB65I0mzNH9u8JV1gs2Dx1B/view?usp=drive_link" },
+      { presenter: "Alex George (2)", link: "https://drive.google.com/file/d/1AuFt8_rMiqoH632p-Unlfqyc1R56IaFE/view?usp=drive_link" },
+      { presenter: "Matthew Soper",   link: "https://drive.google.com/file/d/1Bx2pe3jFjXICLQvuDo3xxuEfjHF0MFJf/view?usp=drive_link" },
+      { presenter: "Nia Davies",      link: "https://drive.google.com/file/d/1Y18NwcxRlv2_XdLn-nKfDdGrUYGYMocU/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 18,
+    title: "How Financially Liquid Is Whisky?",
+    versions: [
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1kOzy_ekdevV0dEOTrLoJ7u4cb3Er5iyi/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1vkeCZBky0raoSNFEP_1eqBnewGBScy-u/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 19,
+    title: "What Is Campbeltown Bond And Why Does It Matter?",
+    versions: [
+      { presenter: "Alex George",     link: "https://drive.google.com/file/d/1jOpCoCeHkdFAM7-aMIPwIb1TgbWWrX7L/view?usp=drive_link" },
+      { presenter: "Robert Long (1)", link: "https://drive.google.com/file/d/1L9x8n_kxDurSv7Gld2xnIJXPB3qmx7-U/view?usp=drive_link" },
+      { presenter: "Robert Long (2)", link: "https://drive.google.com/file/d/1Wp5yUxrGqCAr6kIDxx6NDH8YN9DU0w_E/view?usp=drive_link" },
+      { presenter: "Robert Long (3)", link: "https://drive.google.com/file/d/10cIZmqZnRUI2xGJjWgAFLOmueGH2yhwk/view?usp=drive_link" },
+      { presenter: "Matthew Soper",   link: "https://drive.google.com/file/d/1o5axTyLBabOgWcyCh7HVzGNNAsHhGCIx/view?usp=drive_link" },
+      { presenter: "Nia Davies",      link: "https://drive.google.com/file/d/1M4jiC8NwYjrvMsZOLvjxePMbECQtbhxZ/view?usp=sharing" },
+      { presenter: "Ryan Stockman",   link: "https://drive.google.com/file/d/1YrsvhZOh0myJvqGTRmvel4E-QXbyNDb9/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 20,
+    title: "What Happens After I Buy?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1XU1MweKY5tIPYeKSUwfluujxOG5ZrJHm/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/1mw0OyCIxZMmXzLwanCBr5xaU6IJ9Sznl/view?usp=sharing" },
+      { presenter: "Ryan Stockman", link: "https://drive.google.com/file/d/1R3sTmeYXY2LrKXW11Jd2aqP95REu7ZtO/view?usp=sharing" }
+    ]
+  },
+  {
+    num: 21,
+    title: "What Costs Are Included When I Buy a Cask?",
+    versions: [
+      { presenter: "Alex George",   link: "https://drive.google.com/file/d/1ZNFVyuOGoADhneXNzkfC_vp_Y0fTTuRf/view?usp=drive_link" },
+      { presenter: "Matthew Soper", link: "https://drive.google.com/file/d/1eciP28oRZGYEyoeqhLBKOXhRlQZTOTIp/view?usp=drive_link" },
+      { presenter: "Nia Davies",    link: "https://drive.google.com/file/d/15l2PCtgtox-ziNUMVZCyOU49D9aDrDwN/view?usp=sharing" },
+      { presenter: "Ryan Stockman", link: "https://drive.google.com/file/d/1ezsp1BTCBUpWY_wkn1V6BnuwVdAmEPQ0/view?usp=sharing" }
+    ]
+  }
+];
+
+// ── PRESENTER THUMBNAILS ──────────────────────────────────
+const PRESENTER_THUMBS = {
+  "Alex George":    "https://drive.google.com/thumbnail?id=1m92aG2_ESZDy8OdR6JbKWWJm34uY3k7w&sz=w640",
+  "Alex George (1)":"https://drive.google.com/thumbnail?id=1m92aG2_ESZDy8OdR6JbKWWJm34uY3k7w&sz=w640",
+  "Alex George (2)":"https://drive.google.com/thumbnail?id=1m92aG2_ESZDy8OdR6JbKWWJm34uY3k7w&sz=w640",
+  "Robert Long":    "https://drive.google.com/thumbnail?id=16KWQD4Bc3F3Qiwe_elLPmraEcX92fIgS&sz=w640",
+  "Robert Long (1)":"https://drive.google.com/thumbnail?id=16KWQD4Bc3F3Qiwe_elLPmraEcX92fIgS&sz=w640",
+  "Robert Long (2)":"https://drive.google.com/thumbnail?id=16KWQD4Bc3F3Qiwe_elLPmraEcX92fIgS&sz=w640",
+  "Robert Long (3)":"https://drive.google.com/thumbnail?id=16KWQD4Bc3F3Qiwe_elLPmraEcX92fIgS&sz=w640",
+  "Matthew Soper":  "https://drive.google.com/thumbnail?id=121glB8YqSWWArnVP946JLQP_C3Pq388z&sz=w640",
+  "Will Turnage":   "https://drive.google.com/thumbnail?id=1h_phwZnsoQ39bU_DGFrM5jP83qO-yWdp&sz=w640",
+  "Nia Davies":     "https://drive.google.com/thumbnail?id=1TCGtG_lTzYYlHM0nUTtpU71pebQaWW8t&sz=w640",
+  "Ryan Stockman":  "https://drive.google.com/thumbnail?id=1GABwkdqPaF-7zIC8qpF1hZvXlKz2fC4y&sz=w640"
+};
+
+// ── STATE ─────────────────────────────────────────────────
+const activePresenter = {};
+faqs.forEach(f => { activePresenter[f.num] = 0; });
+
+// ── CARD BUILDER ──────────────────────────────────────────
+function buildCard(faq) {
+  const activeIdx     = activePresenter[faq.num];
+  const activeVersion = faq.versions[activeIdx];
+  const isPlaceholder = !activeVersion.link || activeVersion.link === 'LINK_PLACEHOLDER';
+  const multiVersion  = faq.versions.length > 1;
+  const safeTitle     = faq.title.replace(/'/g, "\\'");
+  const safePresenter = activeVersion.presenter.replace(/'/g, "\\'");
+  const thumbUrl      = PRESENTER_THUMBS[activeVersion.presenter] || null;
+
+  const presenterBtns = faq.versions.map((v, i) => `
+    <button
+      class="presenter-btn ${i === activeIdx ? 'active' : ''}"
+      onclick="selectPresenter(${faq.num}, ${i}); event.stopPropagation();">
+      ${v.presenter}
+    </button>
+  `).join('');
+
+  const thumbClick = isPlaceholder
+    ? ''
+    : `onclick="openVideo('${activeVersion.link}', '${safeTitle} — ${safePresenter}')"`;
+
+  const shareBar = isPlaceholder ? '' : `
+    <div class="card-share-bar">
+      <button class="share-btn" id="copy-btn-${faq.num}"
+        onclick="copyLink(${faq.num}, ${activeIdx}); event.stopPropagation();">
+        <svg viewBox="0 0 12 12"><path d="M8 1H11V4"/><path d="M11 1L5 7"/><path d="M5 2H1V11H10V7"/></svg>
+        Copy Link
+      </button>
+      <button class="share-btn"
+        onclick="openEmbed(${faq.num}, ${activeIdx}); event.stopPropagation();">
+        <svg viewBox="0 0 12 12"><polyline points="3,4 1,6 3,8"/><polyline points="9,4 11,6 9,8"/><line x1="7" y1="2" x2="5" y2="10"/></svg>
+        Embed Code
+      </button>
+    </div>`;
+
+  return `
+    <div class="card" id="card-${faq.num}">
+      <div class="card-thumb" ${thumbClick}>
+        ${thumbUrl
+          ? `<img class="thumb-img" src="${thumbUrl}" alt="${faq.title}" loading="lazy">`
+          : '<div class="thumb-bg"></div>'}
+        <div class="play-icon">
+          <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+        </div>
+        <span class="card-num">FAQ ${faq.num}</span>
+        ${multiVersion ? `<span class="card-multi">${faq.versions.length} versions</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-title">${faq.title}</div>
+        <span class="presenter-label">${multiVersion ? 'Choose presenter' : 'Presenter'}</span>
+        <div class="presenter-row">${presenterBtns}</div>
+      </div>
+      ${shareBar}
+    </div>
+  `;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('video-grid');
+  if (!grid) return;
+  grid.innerHTML = faqs.map(buildCard).join('');
+}
+
+function selectPresenter(faqNum, idx) {
+  activePresenter[faqNum] = idx;
+  const faq  = faqs.find(f => f.num === faqNum);
+  const card = document.getElementById(`card-${faqNum}`);
+  if (!faq || !card) return;
+  card.outerHTML = buildCard(faq);
+}
+
+// ── VIDEO MODAL ───────────────────────────────────────────
+function openVideo(driveLink, title) {
+  if (!driveLink || driveLink === 'LINK_PLACEHOLDER') return;
+
+  const match = driveLink.match(/\/d\/([^/?]+)/);
+  if (!match) return;
+
+  const embedUrl = `https://drive.google.com/file/d/${match[1]}/preview`;
+
+  document.getElementById('video-frame').src               = embedUrl;
+  document.getElementById('video-modal-title').textContent = title || '';
+  document.getElementById('video-modal').style.display     = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideo() {
+  document.getElementById('video-modal').style.display = 'none';
+  document.getElementById('video-frame').src = '';
+  document.body.style.overflow = '';
+}
+
+// ── SHARE & EMBED ─────────────────────────────────────────
+function getPageUrl(faqNum, presenterIdx) {
+  const base = window.location.href.split('?')[0];
+  return `${base}?faq=${faqNum}&presenter=${presenterIdx}`;
+}
+
+function copyLink(faqNum, presenterIdx) {
+  const url = getPageUrl(faqNum, presenterIdx);
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById(`copy-btn-${faqNum}`);
+    if (!btn) return;
+    const orig = btn.innerHTML;
+    btn.innerHTML = `<svg viewBox="0 0 12 12" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.5"><polyline points="2,6 5,9 10,3"/></svg> Copied!`;
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function openEmbed(faqNum, presenterIdx) {
+  const faq     = faqs.find(f => f.num === faqNum);
+  if (!faq) return;
+  const version = faq.versions[presenterIdx];
+  const match   = version.link.match(/\/d\/([^/?]+)/);
+  if (!match) return;
+
+  const embedUrl   = `https://drive.google.com/file/d/${match[1]}/preview`;
+  const pageUrl    = getPageUrl(faqNum, presenterIdx);
+  const iframeCode = `<iframe\n  src="${embedUrl}"\n  width="100%"\n  height="480"\n  allow="autoplay; fullscreen"\n  allowfullscreen\n  style="border:none;">\n</iframe>`;
+
+  document.getElementById('embed-code-area').value          = iframeCode;
+  document.getElementById('embed-modal-title').textContent  = `${faq.title} — ${version.presenter}`;
+  document.getElementById('embed-page-link').textContent    = pageUrl;
+  document.getElementById('embed-page-link').href           = pageUrl;
+  document.getElementById('embed-overlay').classList.add('open');
+}
+
+function closeEmbed() {
+  document.getElementById('embed-overlay').classList.remove('open');
+}
+
+function copyEmbedCode() {
+  const code = document.getElementById('embed-code-area').value;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('embed-copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy Embed Code'; }, 2000);
+  });
+}
+
+// ── URL PARAMETER AUTO-OPEN ───────────────────────────────
+function checkUrlParams() {
+  const params  = new URLSearchParams(window.location.search);
+  const faqNum  = parseInt(params.get('faq'));
+  const presIdx = parseInt(params.get('presenter') || '0');
+  if (!faqNum) return;
+
+  const faq = faqs.find(f => f.num === faqNum);
+  if (!faq) return;
+
+  const idx     = Math.min(presIdx, faq.versions.length - 1);
+  const version = faq.versions[idx];
+  if (!version || !version.link || version.link === 'LINK_PLACEHOLDER') return;
+
+  activePresenter[faqNum] = idx;
+  renderGrid();
+
+  setTimeout(() => {
+    const card = document.getElementById(`card-${faqNum}`);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => {
+      openVideo(version.link, `${faq.title} — ${version.presenter}`);
+    }, 600);
+  }, 200);
+}
+
+// ── FEEDBACK ──────────────────────────────────────────────
+function populateFeedbackSelect() {
+  const sel = document.getElementById('fb-video');
+  if (!sel) return;
+  faqs.forEach(f => {
+    const opt        = document.createElement('option');
+    opt.value        = `FAQ ${f.num}: ${f.title}`;
+    opt.textContent  = `${f.num}. ${f.title}`;
+    sel.appendChild(opt);
+  });
+}
+
+function openFeedback() {
+  document.getElementById('feedback-overlay').classList.add('open');
+  document.getElementById('feedback-form-wrap').style.display = 'flex';
+  document.getElementById('feedback-success').style.display   = 'none';
+}
+
+function closeFeedback() {
+  document.getElementById('feedback-overlay').classList.remove('open');
+}
+
+async function submitFeedback() {
+  const name    = document.getElementById('fb-name').value.trim();
+  const video   = document.getElementById('fb-video').value;
+  const message = document.getElementById('fb-message').value.trim();
+  if (!name || !video || !message) { alert('Please fill in all fields.'); return; }
+  if (FORMSPREE_URL && FORMSPREE_URL !== 'YOUR_FORMSPREE_ENDPOINT') {
+    try {
+      await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name, video, message })
+      });
+    } catch(e) { console.warn('Formspree error', e); }
+  }
+  document.getElementById('feedback-form-wrap').style.display = 'none';
+  document.getElementById('feedback-success').style.display   = 'flex';
+}
+
+// ── INIT ──────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', function () {
+  renderGrid();
+  populateFeedbackSelect();
+  checkUrlParams();
+
+  document.getElementById('video-modal').addEventListener('click', function (e) {
+    if (e.target === this) closeVideo();
+  });
+  document.getElementById('feedback-overlay').addEventListener('click', function (e) {
+    if (e.target === this) closeFeedback();
+  });
+  document.getElementById('embed-overlay').addEventListener('click', function (e) {
+    if (e.target === this) closeEmbed();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeVideo(); closeFeedback(); closeEmbed(); }
+  });
+});
+</script>
+</body>
+</html>
