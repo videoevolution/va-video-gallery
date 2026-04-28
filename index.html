@@ -822,6 +822,11 @@ function buildCard(faq) {
     ? ''
     : `onclick="openVideo('${activeVersion.link}', '${safeTitle} — ${safePresenter}')"`;
 
+  const fileIdMatch = !isPlaceholder ? activeVersion.link.match(/\/d\/([^/?]+)/) : null;
+  const downloadUrl = fileIdMatch
+    ? `https://drive.google.com/uc?export=download&id=${fileIdMatch[1]}`
+    : null;
+
   const shareBar = isPlaceholder ? '' : `
     <div class="card-share-bar">
       <button class="share-btn" id="copy-btn-${faq.num}"
@@ -834,6 +839,11 @@ function buildCard(faq) {
         <svg viewBox="0 0 12 12"><polyline points="3,4 1,6 3,8"/><polyline points="9,4 11,6 9,8"/><line x1="7" y1="2" x2="5" y2="10"/></svg>
         Embed Code
       </button>
+      ${downloadUrl ? `
+      <a class="share-btn" href="${downloadUrl}" target="_blank" onclick="event.stopPropagation();">
+        <svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="8"/><polyline points="3,5 6,8 9,5"/><line x1="1" y1="11" x2="11" y2="11"/></svg>
+        Download
+      </a>` : ''}
     </div>`;
 
   return `
